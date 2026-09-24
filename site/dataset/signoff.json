@@ -1,6 +1,11 @@
 {
+  "schema_version": "v1",
+  "version": "1.0.0",
+  "status": "success",
+  "edition": "Milestone M10",
+  "edition_id": "M10-RELEASE",
+  "timestamp": "2026-09-24T00:00:00Z",
   "channel": "stable",
   "contributor": "Tsuji-World Team",
-  "release": "1.0.0",
   "signed": true
 }

@@ -1,5 +1,10 @@
 {
-  "status": "verified",
+  "schema_version": "v1",
+  "version": "1.0.0",
+  "status": "success",
+  "edition": "Milestone M10",
+  "edition_id": "M10-RELEASE",
+  "timestamp": "2026-09-24T00:00:00Z",
   "lock_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "current_hashes": {}
 }
