@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TSUJI WORLD / Core Review</title>
+  <link rel="stylesheet" href="audit-viewer.css">
+</head>
+<body>
+  <div class="shell">
+    <section class="loader" id="loader">
+      <p class="kicker">TSUJI WORLD / PRIVATE REVIEW</p>
+      <h1>Load the release artifacts.</h1>
+      <p>Select the four published JSON files. They stay in this browser tab and are never uploaded.</p>
+      <div class="file-grid">
+        <label><span>audit.json</span><input id="audit-file" type="file" accept="application/json"></label>
+        <label><span>proof.json</span><input id="proof-file" type="file" accept="application/json"></label>
+        <label><span>signoff.json</span><input id="signoff-file" type="file" accept="application/json"></label>
+        <label><span>routes.json</span><input id="routes-file" type="file" accept="application/json"></label>
+      </div>
+      <p class="error" id="error" role="alert"></p>
+    </section>
+    <div id="dashboard" hidden></div>
+  </div>
+  <script src="audit-viewer.js"></script>
+  <script>
+    (function () {
+      const ids = ["audit", "proof", "signoff", "routes"];
+      const files = {};
+      const loader = document.getElementById("loader");
+      const dashboard = document.getElementById("dashboard");
+      const error = document.getElementById("error");
+      ids.forEach(function (id) {
+        document.getElementById(id + "-file").addEventListener("change", function (event) {
+          if (event.target.files[0]) files[id] = event.target.files[0];
+          if (Object.keys(files).length === ids.length) load();
+        });
+      });
+      async function load() {
+        try {
+          const parsed = {};
+          for (const id of ids) parsed[id] = JSON.parse(await files[id].text());
+          const model = TsujiAuditViewer.buildViewModel(parsed);
+          TsujiAuditViewer.render(dashboard, model, TsujiAuditViewer.createLocalMetrics());
+          loader.hidden = true;
+          dashboard.hidden = false;
+        } catch (reason) {
+          error.textContent = reason.message || "The artifact set could not be verified.";
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
