@@ -1,17 +1,10 @@
 {
   "schema_version": "v1",
-  "version": "1.0.0",
   "status": "success",
-  "edition": "Milestone M10",
-  "edition_id": "M10-RELEASE",
-  "project": "TSUJI WORLD",
-  "release": "1.0.0",
-  "timestamp": "2026-09-24T00:00:00Z",
   "stages": [
     "init",
     "audit",
-    "verify",
-    "signoff"
+    "verify"
   ],
   "counts": {
     "total": 0,
@@ -19,10 +12,7 @@
   },
   "fixity": {
     "core": {
-      "status": "verified",
       "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
-  },
-  "items": [],
-  "records": []
+  }
 }
