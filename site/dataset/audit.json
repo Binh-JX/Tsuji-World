@@ -1,4 +1,6 @@
 {
+  "schema_version": "1.0",
+  "version": "1.0.0",
   "status": "success",
   "edition": "Milestone M10",
   "edition_id": "M10-RELEASE",
